@@ -17,7 +17,7 @@ public class WaitList<E> implements IWaitList<E> {
 
   /**
    * Создаёт список ожидания из переданной коллекции
-   * @param c       коллекция, из которой будет создан список ожидания
+   * @param c               коллекция, из которой будет создан список ожидания
    */
   public WaitList(Collection<E> c) {
     this.content = new ConcurrentLinkedQueue<E>(c);
@@ -25,11 +25,20 @@ public class WaitList<E> implements IWaitList<E> {
 
   /**
    * Объединяет информацию об объекте в одну строку
-   * @return        общая информация об объекте
+   * @return                общая информация об объекте
    */
   @Override
   public String toString() {
-    return this.content.toString();
+    var queue = this.content.toArray();
+    StringBuilder strQueue = new StringBuilder("WaitList: ");
+
+    strQueue.append("[").append(queue[0].toString());
+    for (int i = 1; i < queue.length; ++i) {
+      strQueue.append(", ").append(queue[i].toString());
+    }
+    strQueue.append("]");
+
+    return strQueue.toString();
   }
 
   /**
@@ -68,7 +77,7 @@ public class WaitList<E> implements IWaitList<E> {
 
   /**
    * Проверяет, является ли список пустым
-   * @return          true - список пуст, false - в списке есть хотя бы 1 элемент
+   * @return                true - список пуст, false - в списке есть хотя бы 1 элемент
    */
   public boolean isEmpty() {
     return this.content.isEmpty();
