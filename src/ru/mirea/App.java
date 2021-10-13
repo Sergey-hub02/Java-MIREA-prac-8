@@ -77,5 +77,38 @@ public class App {
     System.out.println(bwl);
 
     System.out.println("=========================================");
+
+    /*========== ТЕСТ КЛАССА UnfairWaitList ==========*/
+    UnfairWaitList<String> uwl = new UnfairWaitList<>();
+    uwl.add("First");
+    uwl.add("Second");
+    uwl.add("Third");
+    uwl.add("Fifth");
+
+    System.out.println(uwl);
+
+    System.out.println();
+    System.out.println("[MSG]: Из UnfairWaitList удаляется элемент \"First\"!");
+
+    uwl.remove("First");
+    System.out.println(uwl);
+
+    System.out.println();
+    System.out.println("[MSG]: Попытка удалить из UnfairWaitList элемент \"Fourth\"!");
+
+    uwl.remove("Fourth");
+    System.out.println(uwl);
+
+    System.out.println();
+    System.out.println("[MSG]: В UnfairWaitList элемент \"Third\" отправляется в конец!");
+
+    uwl.moveToBack("Third");
+    System.out.println(uwl);
+
+    System.out.println();
+    System.out.println("[MSG]: Попытка отправить в конец элемент \"Fourth\"!");
+
+    uwl.moveToBack("Fourth");
+    System.out.println(uwl);
   }
 }

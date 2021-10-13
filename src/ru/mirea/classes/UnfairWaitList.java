@@ -21,6 +21,10 @@ public class UnfairWaitList<E> extends WaitList<E> {
    * @param element           бедный элемент
    */
   public void moveToBack(E element) {
-    super.add(super.remove());
+    if (this.contains(element)) {
+      /* если элемент существует, то его можно сначала добавить в конец, а затем удалить */
+      super.add(element);
+      this.remove(element);
+    }
   }
 }
