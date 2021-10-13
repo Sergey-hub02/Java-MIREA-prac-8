@@ -60,6 +60,22 @@ public class App {
     System.out.println(wl);
 
     System.out.println("=========================================");
+
     /*========== ТЕСТ КЛАССА BoundedWaitList ==========*/
+    BoundedWaitList<String> bwl = new BoundedWaitList<>(3);
+
+    System.out.println("BoundedWaitList расчитан на " + bwl.getCapacity() + " элементов!");
+
+    bwl.add("One");
+    bwl.add("Two");
+    bwl.add("Three");
+
+    System.out.println(bwl);
+    System.out.println();
+
+    bwl.add("Four");
+    System.out.println(bwl);
+
+    System.out.println("=========================================");
   }
 }
