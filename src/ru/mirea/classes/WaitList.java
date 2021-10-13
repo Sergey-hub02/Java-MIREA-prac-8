@@ -29,8 +29,12 @@ public class WaitList<E> implements IWaitList<E> {
    */
   @Override
   public String toString() {
+    if (this.content.size() == 0) {
+      return WaitList.class.getName() + ": []";
+    }
+
     var queue = this.content.toArray();
-    StringBuilder strQueue = new StringBuilder("WaitList: ");
+    StringBuilder strQueue = new StringBuilder(WaitList.class.getName() + ": ");
 
     strQueue.append("[").append(queue[0].toString());
     for (int i = 1; i < queue.length; ++i) {

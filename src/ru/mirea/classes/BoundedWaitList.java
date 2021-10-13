@@ -31,6 +31,10 @@ public class BoundedWaitList<E> extends WaitList<E> {
    */
   @Override
   public String toString() {
+    if (this.content.size() == 0) {
+      return WaitList.class.getName() + ": []";
+    }
+
     var queue = this.content.toArray();
     StringBuilder strQueue = new StringBuilder("BoundedWaitList: ");
 
